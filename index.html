@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>FUTURE PARTY | Official Website</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  
+  <style>
+    body { 
+      font-family: 'Prompt', sans-serif; 
+      background: #fdfbff; 
+      color: #334155; 
+      scroll-behavior: smooth; 
+      overflow-x: hidden; 
+    }
+    .glass { 
+      background: rgba(255, 255, 255, 0.75); 
+      backdrop-filter: blur(14px); 
+      border: 1px solid rgba(255, 255, 255, 0.6); 
+    }
+    .hover-scale { 
+      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1); 
+    }
+    .hover-scale:hover { 
+      transform: translateY(-4px); 
+    }
+    .custom-shadow { 
+      box-shadow: 0 12px 40px -12px rgba(168, 85, 247, 0.12); 
+    }
+    
+    /* Animation สำหรับตัววิ่ง */
+    @keyframes marquee { 
+      0% { transform: translateX(0%); } 
+      100% { transform: translateX(-50%); } 
+    }
+    .marquee-container { 
+      display: flex; 
+      overflow: hidden; 
+      white-space: nowrap; 
+      width: 100%; 
+    }
+    .marquee-content { 
+      display: flex; 
+      animation: marquee 20s linear infinite; 
+    }
+    
+    /* ปรับแต่ง Swiper */
+    .swiper-button-next, .swiper-button-prev { 
+      color: #a855f7 !important; 
+      transform: scale(0.5); 
+    }
+    .swiper-pagination-bullet-active { 
+      background: #a855f7 !important; 
+    }
+    
+    /* Effect โหลดหน้าเว็บ */
+    .fade-in { 
+      animation: fadeIn 0.5s ease-in-out forwards; 
+    }
+    @keyframes fadeIn { 
+      from { opacity: 0; } 
+      to { opacity: 1; } 
+    }
+  </style>
+</head>
+<body class="bg-slate-50 fade-in">
+
+  <nav class="sticky top-0 z-50 glass shadow-sm px-4 py-3 md:px-6 md:py-4">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <div class="flex items-center gap-2">
+        <div class="bg-gradient-to-tr from-purple-600 to-pink-500 p-1.5 md:p-2 rounded-xl text-white">
+          <i data-lucide="shield-check" class="w-5 h-5 md:w-6 md:h-6"></i>
+        </div>
+        <span class="text-lg md:text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-500">FUTURE</span>
+      </div>
+      <div class="flex items-center gap-2 md:gap-8 text-sm font-medium">
+        <a href="#policy" class="hidden md:block hover:text-purple-600 transition-colors">นโยบาย</a>
+        <a href="#info" class="hidden md:block hover:text-purple-600 transition-colors">ของหาย</a>
+        <button onclick="reportLostModal()" class="bg-purple-600 text-white px-4 py-2 md:px-5 md:py-2.5 rounded-full hover:bg-purple-700 transition-all shadow-md text-xs md:text-sm">
+          + แจ้งของหาย
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <section id="hero" class="relative overflow-hidden pt-10 pb-16 md:pt-16 md:pb-24 px-4 md:px-6">
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
+      <div class="text-center lg:text-left z-10">
+        <span class="inline-block px-3 py-1 rounded-full bg-purple-100 text-purple-600 text-[10px] md:text-xs font-bold mb-4 tracking-widest uppercase">VOTE NO.01</span>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">เปลี่ยน <span class="text-purple-600 italic">ไอเดียล้ำๆ</span> <br>ให้ใช้งานได้ <span class="text-pink-500">จริง</span></h1>
+        <p class="text-base md:text-lg text-slate-500 mb-8 px-4 lg:px-0">แพลตฟอร์มรับฟังเสียงนักเรียนและจัดการของหายที่เสถียรที่สุด รองรับทุกอุปกรณ์</p>
+        <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-3">
+          <button onclick="scrollToId('policy')" class="px-6 py-3.5 md:px-8 md:py-4 bg-slate-900 text-white rounded-2xl font-semibold shadow-lg hover:bg-slate-800 transition-all flex items-center justify-center gap-2 text-sm md:text-base">ดูนโยบายหลัก <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
+          <button onclick="scrollToId('support')" class="px-6 py-3.5 md:px-8 md:py-4 bg-white border border-slate-200 rounded-2xl font-semibold hover:bg-slate-50 transition-all text-sm md:text-base">ส่งข้อความสนับสนุน</button>
+        </div>
+      </div>
+      <div class="relative mt-8 lg:mt-0">
+        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=1000" class="rounded-[30px] md:rounded-[40px] shadow-2xl border-4 md:border-8 border-white w-full object-cover h-64 md:h-auto" alt="Hero Image">
+      </div>
+    </div>
+  </section>
+
+  <section id="policy" class="py-16 md:py-24 px-4 md:px-6 bg-white">
+    <div class="max-w-7xl mx-auto text-center mb-10 md:mb-16">
+      <h2 class="text-2xl md:text-3xl font-bold mb-3 flex items-center justify-center gap-2"><i data-lucide="sparkles" class="text-yellow-400"></i> นโยบายขับเคลื่อนโรงเรียน</h2>
+      <p class="text-sm md:text-base text-slate-500">แตะที่การ์ดเพื่ออ่านรายละเอียดเพิ่มเติม</p>
+    </div>
+    <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+      <div onclick="policyDetail('Digital School', 'ขยายโครงข่ายเน็ตความเร็วสูงระดับอุตสาหกรรมในจุดอับสัญญาณทั้งหมด')" class="glass p-6 md:p-8 rounded-[24px] md:rounded-[32px] hover-scale custom-shadow cursor-pointer">
+        <div class="w-12 h-12 md:w-14 md:h-14 bg-purple-100 rounded-2xl flex items-center justify-center text-purple-600 mb-4 md:mb-6"><i data-lucide="cpu"></i></div>
+        <h3 class="text-lg md:text-xl font-bold mb-2">Digital School</h3>
+        <p class="text-xs md:text-sm text-slate-500">ยกระดับโรงเรียนสู่ยุคดิจิทัลด้วยระบบโครงข่ายความเร็วสูงเสถียร 100%</p>
+      </div>
+      <div onclick="policyDetail('Green Heart', 'ตู้กรองน้ำดื่มสะอาดอัจฉริยะ ตรวจเช็คคุณภาพไส้กรองแบบเรียลไทม์')" class="glass p-6 md:p-8 rounded-[24px] md:rounded-[32px] hover-scale custom-shadow cursor-pointer">
+        <div class="w-12 h-12 md:w-14 md:h-14 bg-green-100 rounded-2xl flex items-center justify-center text-green-600 mb-4 md:mb-6"><i data-lucide="leaf"></i></div>
+        <h3 class="text-lg md:text-xl font-bold mb-2">Green Heart</h3>
+        <p class="text-xs md:text-sm text-slate-500">สร้างระบบนิเวศโรงเรียนสีเขียวและจุดเติมน้ำดื่มที่ถูกสุขอนามัย</p>
+      </div>
+      <div onclick="policyDetail('Well-Being', 'สร้างพื้นที่ Co-Working และพื้นที่ผ่อนคลายความเครียดจากการเรียน')" class="glass p-6 md:p-8 rounded-[24px] md:rounded-[32px] hover-scale custom-shadow cursor-pointer">
+        <div class="w-12 h-12 md:w-14 md:h-14 bg-pink-100 rounded-2xl flex items-center justify-center text-pink-600 mb-4 md:mb-6"><i data-lucide="heart"></i></div>
+        <h3 class="text-lg md:text-xl font-bold mb-2">Well-Being</h3>
+        <p class="text-xs md:text-sm text-slate-500">ดูแลสวัสดิภาพ ความสะอาด และพื้นที่สร้างสรรค์ของนักเรียน</p>
+      </div>
+      <div onclick="policyDetail('Creative Festival', 'การแข่งขันกีฬา อีสปอร์ต และงานแสดงดนตรีศิลปะอย่างเป็นระบบ')" class="glass p-6 md:p-8 rounded-[24px] md:rounded-[32px] hover-scale custom-shadow cursor-pointer">
+        <div class="w-12 h-12 md:w-14 md:h-14 bg-orange-100 rounded-2xl flex items-center justify-center text-orange-600 mb-4 md:mb-6"><i data-lucide="music"></i></div>
+        <h3 class="text-lg md:text-xl font-bold mb-2">Creative Festival</h3>
+        <p class="text-xs md:text-sm text-slate-500">ผลักดันพื้นที่ปล่อยของและส่งเสริมอุตสาหกรรมสร้างสรรค์</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="info" class="py-16 md:py-20 px-4 md:px-6">
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-8 md:gap-12">
+      
+      <div class="lg:col-span-7 order-1 lg:order-2">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-xl md:text-2xl font-bold flex items-center gap-2"><i data-lucide="box" class="text-purple-500"></i> ศูนย์ประสานงานของหาย</h2>
+        </div>
+
+        <div class="w-full bg-red-50 border border-red-100 rounded-xl md:rounded-2xl py-2 md:py-3 px-3 md:px-4 mb-6 overflow-hidden">
+          <div class="marquee-container">
+            <div class="marquee-content text-red-600 font-bold text-xs md:text-sm flex gap-8 md:gap-12">
+              <span class="flex items-center gap-1.5"><i data-lucide="alert-circle" class="w-3 h-3 md:w-4 md:h-4"></i> ของหายได้คืน มั่นใจระบบตามหาด้วยนวัตกรรมจัดเก็บข้อมูลความเร็วสูง</span>
+              <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-3 h-3 md:w-4 md:h-4"></i> หากเก็บของได้ สามารถส่งรูปเข้าระบบเพื่อขึ้นจอแสดงผลได้ทันที</span>
+              <span class="flex items-center gap-1.5"><i data-lucide="alert-circle" class="w-3 h-3 md:w-4 md:h-4"></i> ของหายได้คืน มั่นใจระบบตามหาด้วยนวัตกรรมจัดเก็บข้อมูลความเร็วสูง</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper lostItemSwiper w-full rounded-[24px] md:rounded-[32px] custom-shadow bg-white p-2">
+          <div class="swiper-wrapper" id="swiperWrapper">
+            <div class="swiper-slide glass rounded-[20px] md:rounded-[28px] p-8 md:p-12 text-center" id="skeletonLoader">
+              <div class="animate-spin text-purple-600 inline-block mb-4"><i data-lucide="loader-2" class="w-8 h-8"></i></div>
+              <p class="text-slate-500 text-xs md:text-sm">กำลังซิงค์ข้อมูลจากคลาวด์...</p>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 order-2 lg:order-1">
+        <h2 class="text-xl md:text-2xl font-bold flex items-center gap-2 mb-6"><i data-lucide="newspaper" class="text-blue-500"></i> ประชาสัมพันธ์พรรค</h2>
+        <div class="space-y-4">
+          <div class="glass p-4 md:p-6 rounded-2xl md:rounded-3xl flex gap-4 md:gap-6">
+            <div class="w-20 h-20 md:w-32 md:h-24 bg-slate-200 rounded-xl md:rounded-2xl overflow-hidden flex-shrink-0">
+               <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=200" class="w-full h-full object-cover" alt="News Image">
+            </div>
+            <div>
+              <span class="text-[10px] md:text-xs font-bold text-blue-500 uppercase">OFFICIAL</span>
+              <h4 class="text-sm md:text-lg font-bold my-1">ระบบเว็บแอปพลิเคชันซิงค์ฐานข้อมูลสด</h4>
+              <p class="text-xs md:text-sm text-slate-500 line-clamp-2">เปิดใช้งานระบบจัดเก็บบันทึกข้อมูลผ่าน Google ชีตอย่างเป็นทางการ ปลอดภัยและแม่นยำ</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="support" class="py-16 md:py-24 px-4 md:px-6 bg-slate-900 text-white">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-2xl md:text-3xl font-bold mb-4 md:mb-6">เสียงของคุณ คือ พลังของเรา</h2>
+      <form id="supportForm" onsubmit="handleForm(event)" class="space-y-3 md:space-y-4 text-left">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+          <input type="text" id="userName" placeholder="ชื่อ-นามสกุล" required class="w-full px-5 py-3.5 md:px-6 md:py-4 rounded-xl md:rounded-2xl bg-slate-800 border-none text-white focus:ring-2 focus:ring-purple-500 text-sm md:text-base">
+          <input type="text" id="userClass" placeholder="ชั้นเรียน (ม.5/2)" required class="w-full px-5 py-3.5 md:px-6 md:py-4 rounded-xl md:rounded-2xl bg-slate-800 border-none text-white focus:ring-2 focus:ring-purple-500 text-sm md:text-base">
+        </div>
+        <textarea id="userIdea" rows="4" placeholder="ข้อเสนอแนะนโยบาย..." required class="w-full px-5 py-3.5 md:px-6 md:py-4 rounded-xl md:rounded-2xl bg-slate-800 border-none text-white focus:ring-2 focus:ring-purple-500 text-sm md:text-base"></textarea>
+        <button type="submit" class="w-full py-3.5 md:py-4 bg-gradient-to-r from-purple-600 to-pink-500 rounded-xl md:rounded-2xl font-bold hover:opacity-90 transition-all text-sm md:text-base">ส่งพลังสนับสนุน 💜</button>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    // สร้างไอคอน Lucide
+    lucide.createIcons();
+
+    // ตั้งค่า Swiper ให้ Responsive รองรับ มือถือ (1 รูป) และ iPad/PC (2 รูป)
+    let lostSwiper = new Swiper(".lostItemSwiper", {
+      loop: false,
+      autoplay: { delay: 3000, disableOnInteraction: false },
+      pagination: { el: ".swiper-pagination", clickable: true },
+      grabCursor: true,
+      spaceBetween: 15,
+      slidesPerView: 1, // ค่าเริ่มต้นสำหรับมือถือ
+      breakpoints: {
+        768: { slidesPerView: 2, spaceBetween: 20 } // เมื่อจอใหญ่กว่า 768px (iPad ขึ้นไป)
+      }
+    });
+
+    // ฟังก์ชันสร้างการ์ดสไลด์แบบป้องกันจอขาว (ใช้ document.createElement)
+    function appendSlide(name, loc, type, base64Img) {
+      const badgeColor = type.includes('Lost') ? 'bg-amber-100 text-amber-800' : 'bg-green-100 text-green-800';
+      const typeText = type.includes('Lost') ? 'Lost' : 'Found';
+      
+      const slideDiv = document.createElement('div');
+      slideDiv.className = 'swiper-slide rounded-[20px] md:rounded-[26px] overflow-hidden bg-white border border-slate-100 pb-2';
+      
+      // ใส่ onerror เผื่อกรณีรูปล่ม จะได้แสดงรูปสำรองสีเทาแทนการ์ดขาว
+      slideDiv.innerHTML = `
+        <img src="${base64Img}" onerror="this.src='https://images.unsplash.com/photo-1532187863486-abf9d39d6618?auto=format&fit=crop&q=80&w=600'" class="w-full h-48 md:h-56 object-cover bg-slate-100" alt="Lost Object">
+        <div class="p-4 md:p-5 text-left">
+          <div class="flex justify-between items-start mb-2">
+            <h4 class="text-base md:text-lg font-bold text-slate-800 line-clamp-1 w-3/4">${name}</h4>
+            <span class="px-2 py-1 md:px-3 md:py-1 ${badgeColor} text-[10px] md:text-xs font-semibold rounded-full whitespace-nowrap">${typeText}</span>
+          </div>
+          <p class="text-xs md:text-sm text-slate-500 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3 md:w-4 md:h-4"></i> ${loc}</p>
+        </div>
+      `;
+      
+      lostSwiper.appendSlide(slideDiv);
+      lucide.createIcons();
+    }
+
+    // โหลดข้อมูลจาก Google Sheets เมื่อเปิดหน้าเว็บ
+    window.addEventListener('DOMContentLoaded', () => {
+      google.script.run
+        .withSuccessHandler(function(response) {
+          // ลบ Skeleton Loader ออกให้หมด
+          lostSwiper.removeAllSlides();
+          
+          if(response.lostItems && response.lostItems.length > 0) {
+            response.lostItems.forEach(item => {
+              appendSlide(item.name, item.loc, item.type, item.image);
+            });
+          } else {
+             // กรณีไม่มีข้อมูลเลย ให้แสดงรูปตั้งต้น
+             appendSlide("ยังไม่มีรายการ", "ระบบพร้อมใช้งาน", "Found", "https://images.unsplash.com/photo-1588444837495-c6cfcb53b32b?auto=format&fit=crop&q=80&w=600");
+          }
+          
+          lostSwiper.update(); // อัปเดตสไลด์ให้ทำงานสมบูรณ์
+        })
+        .getInitialData();
+    });
+
+    // ฟังก์ชันย่อรูปฝั่งเบราว์เซอร์ ป้องกันขนาดไฟล์เกินลิมิต Google Sheets (50k characters)
+    function compressImage(file) {
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = (event) => {
+          const img = new Image();
+          img.src = event.target.result;
+          img.onload = () => {
+            const canvas = document.createElement('canvas');
+            const MAX_WIDTH = 400; // ลดความกว้างลงมาที่ 400px ให้ภาพเบาที่สุด
+            const scale = MAX_WIDTH / img.width;
+            canvas.width = MAX_WIDTH;
+            canvas.height = img.height * scale;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            // บีบอัดคุณภาพเหลือ 60%
+            resolve(canvas.toDataURL('image/jpeg', 0.6)); 
+          };
+        };
+      });
+    }
+
+    // เปิดป๊อบอัพแจ้งของหาย
+    async function reportLostModal() {
+      const { value: formValues } = await Swal.fire({
+        title: 'แจ้งรายการสิ่งของ',
+        html:
+          '<div class="space-y-3 text-left p-1 mt-2">' +
+          '  <input id="item_name" class="w-full p-3 md:p-4 rounded-xl border bg-slate-50 text-sm md:text-base" placeholder="ชื่อสิ่งของ เช่น แว่นตา, กระเป๋า">' +
+          '  <input id="item_loc" class="w-full p-3 md:p-4 rounded-xl border bg-slate-50 text-sm md:text-base" placeholder="สถานที่หาย/พบ">' +
+          '  <select id="item_type" class="w-full p-3 md:p-4 rounded-xl border bg-slate-50 text-sm md:text-base">' +
+          '    <option value="Lost (ตามหาเจ้าของ)">ตามหาของหาย (Lost)</option>' +
+          '    <option value="Found (ส่งคืนแล้ว)">เจอสิ่งของแล้ว (Found)</option>' +
+          '  </select>' +
+          '  <div class="pt-2"><label class="text-xs font-bold text-gray-500 block mb-1">อัปโหลดรูปภาพสิ่งของ (ขนาดไม่เกิน 5MB)</label>' +
+          '  <input type="file" id="item_img" accept="image/*" class="w-full text-xs md:text-sm text-slate-500 file:mr-3 file:py-2 file:px-3 file:rounded-full file:border-0 file:bg-purple-50 file:text-purple-700 font-semibold"></div>' +
+          '</div>',
+        showCancelButton: true,
+        confirmButtonText: 'บันทึกเข้าระบบ',
+        cancelButtonText: 'ยกเลิก',
+        customClass: { 
+          popup: 'rounded-[24px] md:rounded-[32px] glass w-[90%] md:w-auto', 
+          confirmButton: 'bg-purple-600 px-5 md:px-6 py-2.5 md:py-3 rounded-xl text-white text-sm md:text-base',
+          cancelButton: 'bg-slate-200 text-slate-700 px-5 md:px-6 py-2.5 md:py-3 rounded-xl text-sm md:text-base'
+        },
+        preConfirm: async () => {
+          const name = document.getElementById('item_name').value;
+          const loc = document.getElementById('item_loc').value;
+          const type = document.getElementById('item_type').value;
+          const fileInput = document.getElementById('item_img');
+          
+          if (!name || !loc) { Swal.showValidationMessage('กรุณากรอกข้อมูลให้ครบครับ'); return false; }
+          
+          let compressedBase64 = "https://images.unsplash.com/photo-1532187863486-abf9d39d6618?auto=format&fit=crop&q=80&w=600";
+          if(fileInput.files.length > 0) {
+            compressedBase64 = await compressImage(fileInput.files[0]);
+          }
+          return { name, loc, type, image: compressedBase64 };
+        }
+      });
+
+      if (formValues) {
+        Swal.fire({ title: 'กำลังประมวลผล...', didOpen: () => Swal.showLoading(), customClass: { popup: 'rounded-2xl w-[80%] md:w-auto' } });
+        
+        google.script.run
+          .withSuccessHandler(function(res) {
+            if(res.success) {
+              appendSlide(formValues.name, formValues.loc, formValues.type, formValues.image);
+              lostSwiper.update();
+              lostSwiper.slideTo(lostSwiper.slides.length - 1); 
+              
+              Swal.fire({ icon: 'success', title: 'สำเร็จ', text: res.message, timer: 2000, showConfirmButton: false, customClass: { popup: 'rounded-2xl w-[80%] md:w-auto' } });
+            } else {
+              Swal.fire({ icon: 'error', title: 'เกิดข้อผิดพลาด', text: res.message, customClass: { popup: 'rounded-2xl' } });
+            }
+          })
+          .handleLostReport(formValues);
+      }
+    }
+
+    // ฟังก์ชันจัดการฟอร์มสนับสนุน
+    function handleForm(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button');
+      btn.disabled = true;
+      btn.innerHTML = 'กำลังประมวลผลระบบชีต...';
+
+      const data = {
+        name: document.getElementById('userName').value,
+        class: document.getElementById('userClass').value,
+        idea: document.getElementById('userIdea').value
+      };
+
+      google.script.run
+        .withSuccessHandler(function(res) {
+          Swal.fire({ title: 'สำเร็จ!', text: res.message, icon: 'success', customClass: { popup: 'rounded-2xl w-[80%] md:w-auto' } });
+          e.target.reset();
+          btn.disabled = false;
+          btn.innerHTML = 'ส่งพลังสนับสนุน 💜';
+        })
+        .handleFormSubmit(data);
+    }
+
+    // ฟังก์ชันช่วยเหลือต่างๆ
+    function scrollToId(id) { 
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); 
+    }
+    function policyDetail(title, desc) { 
+      Swal.fire({ title: title, text: desc, confirmButtonText: 'ตกลง', customClass: { popup: 'rounded-[24px] w-[85%] md:w-auto', confirmButton: 'bg-purple-600 px-6 py-2 rounded-xl text-white' } }); 
+    }
+  </script>
+</body>
+</html>
