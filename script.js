@@ -11,7 +11,7 @@ async function uploadToImgBB(file) {
   const formData = new FormData();
   formData.append('image', file);
   // แทนที่ด้วย API KEY ของคุณจาก imgbb.com
-  const response = await fetch('https://api.imgbb.com/1/upload?key=YOUR_IMGBB_KEY', {
+  const response = await fetch('https://api.imgbb.com/1/upload?key=bedf8b681488cb93f8a5dbfd6d698e58', {
     method: 'POST',
     body: formData
   });
