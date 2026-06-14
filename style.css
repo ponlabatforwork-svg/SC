@@ -1,0 +1,7 @@
+.glass { 
+  background: rgba(255, 255, 255, 0.75); 
+  backdrop-filter: blur(14px); 
+  border: 1px solid rgba(255, 255, 255, 0.6); 
+}
+.swiper-pagination-bullet-active { background: #a855f7 !important; }
+.swiper-slide { height: auto !important; }
